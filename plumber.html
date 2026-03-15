@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ProFlow Plumbing — London Plumbers</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a4fa0;
+  --dark-blue:#0d2d5e;
+  --light-blue:#e8f0fc;
+  --orange:#f5821f;
+  --dark:#111827;
+  --mid:#374151;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --bg:#f9fafb;
+  --white:#ffffff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--dark);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* EMERGENCY BANNER */
+.emergency-bar{background:var(--orange);padding:.6rem 2rem;display:flex;justify-content:center;gap:2rem;align-items:center;flex-wrap:wrap}
+.emergency-bar span{font-size:.82rem;font-weight:600;letter-spacing:.05em;color:#fff}
+.emergency-bar a{background:#fff;color:var(--orange);padding:.3rem 1rem;font-size:.78rem;font-weight:700;letter-spacing:.05em}
+
+/* NAV */
+nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;min-height:72px;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:.02em;color:var(--dark-blue);text-transform:uppercase}
+.nav-logo span{color:var(--orange)}
+.nav-links{display:flex;gap:2rem;font-size:.88rem;font-weight:500;color:var(--mid)}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{padding:.7rem 1.5rem;background:var(--orange);color:#fff;font-size:.85rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border:none;cursor:pointer;font-family:'Barlow',sans-serif;transition:background .3s}
+.nav-cta:hover{background:#e06b0a}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--dark-blue) 0%,var(--blue) 60%,#2563eb 100%);min-height:88vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:4rem 2rem}
+.hero-bg-text{position:absolute;right:-2rem;top:50%;transform:translateY(-50%);font-family:'Barlow Condensed',sans-serif;font-size:22rem;font-weight:800;color:rgba(255,255,255,.04);line-height:1;user-select:none;white-space:nowrap}
+.hero-container{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--orange);color:#fff;padding:.4rem 1rem;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,6rem);font-weight:800;line-height:.95;color:#fff;text-transform:uppercase;letter-spacing:.01em;margin-bottom:1.5rem}
+.hero-h1 span{color:var(--orange)}
+.hero-sub{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-orange{padding:1rem 2.2rem;background:var(--orange);color:#fff;font-size:.9rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;font-family:'Barlow',sans-serif;transition:background .3s}
+.btn-orange:hover{background:#e06b0a}
+.btn-white{padding:1rem 2.2rem;background:#fff;color:var(--dark-blue);font-size:.9rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;font-family:'Barlow',sans-serif;transition:opacity .3s}
+.btn-white:hover{opacity:.9}
+.hero-trust{display:flex;gap:2rem;margin-top:2.5rem}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:rgba(255,255,255,.7)}
+.trust-icon{font-size:1.1rem}
+
+.hero-card{background:#fff;padding:2rem;border-radius:4px}
+.hcard-title{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;text-transform:uppercase;color:var(--dark-blue);margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:2px solid var(--orange)}
+.hcard-service{display:flex;align-items:center;gap:.8rem;padding:.9rem 0;border-bottom:1px solid var(--border);cursor:pointer;transition:color .2s}
+.hcard-service:last-child{border-bottom:none}
+.hcard-service:hover .hs-name{color:var(--orange)}
+.hs-icon{width:38px;height:38px;background:var(--light-blue);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.hs-name{font-weight:600;font-size:.9rem;color:var(--dark)}
+.hs-time{font-size:.78rem;color:var(--muted);margin-top:.1rem}
+.hs-arrow{margin-left:auto;color:var(--muted);font-size:1rem}
+.hcard-cta{margin-top:1.5rem;display:block;width:100%;padding:.85rem;background:var(--dark-blue);color:#fff;text-align:center;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;font-family:'Barlow',sans-serif;transition:background .3s}
+.hcard-cta:hover{background:var(--blue)}
+
+/* SERVICES */
+.services{padding:5rem 2rem;background:#fff}
+.container{max-width:1100px;margin:0 auto}
+.sec-label{font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.5rem}
+.sec-h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;text-transform:uppercase;color:var(--dark-blue);line-height:1;margin-bottom:3rem;letter-spacing:.01em}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.scard{padding:2rem;border:2px solid var(--border);background:var(--bg);transition:all .3s;cursor:default}
+.scard:hover{border-color:var(--blue);background:#fff;transform:translateY(-3px)}
+.scard-icon{font-size:2rem;margin-bottom:1rem}
+.scard-name{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;text-transform:uppercase;color:var(--dark-blue);margin-bottom:.5rem}
+.scard-desc{font-size:.88rem;color:var(--muted);line-height:1.6}
+.scard-price{margin-top:1rem;font-size:.82rem;font-weight:600;color:var(--orange)}
+
+/* WHY US */
+.why{padding:5rem 2rem;background:var(--dark-blue);position:relative;overflow:hidden}
+.why::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,.015) 30px,rgba(255,255,255,.015) 31px)}
+.why .sec-label{color:var(--orange)}
+.why .sec-h2{color:#fff}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
+.why-item{text-align:center;padding:2rem 1rem}
+.why-num{font-family:'Barlow Condensed',sans-serif;font-size:3.5rem;font-weight:800;color:var(--orange);line-height:1}
+.why-label{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.6);margin-top:.5rem;text-transform:uppercase;letter-spacing:.05em}
+
+/* AREAS */
+.areas{padding:5rem 2rem;background:var(--bg)}
+.areas-list{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+.area-pill{padding:.7rem 1.2rem;background:#fff;border:1px solid var(--border);font-size:.88rem;font-weight:500;color:var(--mid);text-align:center;transition:all .3s}
+.area-pill:hover{border-color:var(--blue);color:var(--blue)}
+
+/* REVIEWS */
+.reviews{padding:5rem 2rem;background:#fff}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.rcard{padding:1.8rem;border:1px solid var(--border);background:var(--bg)}
+.rcard-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:1rem}
+.rcard-stars{color:var(--orange);font-size:.9rem;letter-spacing:.1em}
+.rcard-source{font-size:.72rem;color:var(--muted);background:var(--border);padding:.2rem .6rem}
+.rcard-text{font-size:.9rem;color:var(--mid);line-height:1.7;margin-bottom:1rem}
+.rcard-author{font-size:.8rem;font-weight:600;color:var(--dark)}
+
+/* CTA */
+.cta-section{padding:5rem 2rem;background:var(--orange);display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+.cta-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:800;text-transform:uppercase;color:#fff;line-height:1}
+.cta-sub{font-size:1rem;color:rgba(255,255,255,.8);margin-top:.8rem}
+.cta-contact{text-align:center}
+.cta-phone{font-family:'Barlow Condensed',sans-serif;font-size:2.5rem;font-weight:800;color:#fff;display:block;letter-spacing:.02em}
+.btn-dark{padding:1rem 2.5rem;background:var(--dark-blue);color:#fff;font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;font-family:'Barlow',sans-serif;margin-top:1rem;transition:background .3s}
+.btn-dark:hover{background:var(--blue)}
+
+/* FOOTER */
+footer{background:var(--dark);padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.f-logo{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:800;text-transform:uppercase;color:#fff}
+.f-logo span{color:var(--orange)}
+.f-copy{font-size:.78rem;color:rgba(255,255,255,.35)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  nav{padding:0 1rem}.nav-links{display:none}
+  .hero{padding:2rem 1rem}.hero-container{grid-template-columns:1fr}.hero-card{display:none}
+  .hero-bg-text{display:none}
+  .services-grid,.reviews-grid,.why-grid,.areas-list{grid-template-columns:1fr 1fr}
+  .services,.reviews,.why,.areas,.cta-section{padding:3rem 1rem}
+  .cta-section{grid-template-columns:1fr;text-align:center}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="emergency-bar">
+  <span>🚨 24/7 Emergency Plumbing Available</span>
+  <span>Call Now: <strong>0800 123 4567</strong></span>
+  <a href="tel:08001234567">CALL NOW →</a>
+</div>
+
+<nav>
+  <div class="nav-logo">Pro<span>Flow</span> Plumbing</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#areas">Areas</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav-cta">Free Quote</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-text">PLUMBER</div>
+  <div class="hero-container">
+    <div>
+      <div class="hero-badge">⚡ Emergency Response in 60 Minutes</div>
+      <h1 class="hero-h1">London's Trusted<br><span>Plumbing</span><br>Experts.</h1>
+      <p class="hero-sub">Gas Safe certified. Available 24/7 for emergencies. Serving all of North London with fast, reliable and transparent pricing — no hidden costs.</p>
+      <div class="hero-btns">
+        <button class="btn-orange">Get a Free Quote</button>
+        <button class="btn-white">Call 0800 123 4567</button>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-icon">✅</span> Gas Safe Registered</div>
+        <div class="trust-item"><span class="trust-icon">✅</span> 5-Star Rated</div>
+        <div class="trust-item"><span class="trust-icon">✅</span> 10yr Warranty</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3 class="hcard-title">Our Services</h3>
+      <div class="hcard-service"><div class="hs-icon">🚨</div><div><div class="hs-name">Emergency Callout</div><div class="hs-time">Response in 60 minutes</div></div><span class="hs-arrow">›</span></div>
+      <div class="hcard-service"><div class="hs-icon">🔥</div><div><div class="hs-name">Boiler Repair & Install</div><div class="hs-time">Same-day available</div></div><span class="hs-arrow">›</span></div>
+      <div class="hcard-service"><div class="hs-icon">🚿</div><div><div class="hs-name">Bathroom Fitting</div><div class="hs-time">Free design service</div></div><span class="hs-arrow">›</span></div>
+      <div class="hcard-service"><div class="hs-icon">🔧</div><div><div class="hs-name">Leak Detection</div><div class="hs-time">Non-destructive methods</div></div><span class="hs-arrow">›</span></div>
+      <div class="hcard-service"><div class="hs-icon">🏠</div><div><div class="hs-name">Central Heating</div><div class="hs-time">Full system install</div></div><span class="hs-arrow">›</span></div>
+      <button class="hcard-cta">Get a Free Quote Today</button>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="container">
+    <p class="sec-label reveal">What We Do</p>
+    <h2 class="sec-h2 reveal">Complete Plumbing<br>& Heating Services</h2>
+    <div class="services-grid">
+      <div class="scard reveal"><div class="scard-icon">🚨</div><h3 class="scard-name">Emergency Plumbing</h3><p class="scard-desc">Burst pipes, flooding, blocked drains — we respond within 60 minutes, 24 hours a day, 365 days a year.</p><p class="scard-price">From £75 call-out</p></div>
+      <div class="scard reveal"><div class="scard-icon">🔥</div><h3 class="scard-name">Boiler Services</h3><p class="scard-desc">Installation, repair, servicing and Gas Safety certificates. All major brands covered. Gas Safe registered engineers.</p><p class="scard-price">Service from £89</p></div>
+      <div class="scard reveal"><div class="scard-icon">🚿</div><h3 class="scard-name">Bathroom Installation</h3><p class="scard-desc">Full bathroom fitting, en-suite conversions, wet rooms and power showers. Free design consultation included.</p><p class="scard-price">Free quote</p></div>
+      <div class="scard reveal"><div class="scard-icon">🔧</div><h3 class="scard-name">Leak Detection</h3><p class="scard-desc">Advanced non-destructive leak detection. We find the problem without breaking your walls or floors.</p><p class="scard-price">From £120</p></div>
+      <div class="scard reveal"><div class="scard-icon">🏠</div><h3 class="scard-name">Central Heating</h3><p class="scard-desc">Complete central heating installation, power flushing, radiator fitting and underfloor heating systems.</p><p class="scard-price">Free quote</p></div>
+      <div class="scard reveal"><div class="scard-icon">🌊</div><h3 class="scard-name">Drain Unblocking</h3><p class="scard-desc">High-pressure jetting, CCTV drain surveys and full drain clearance for domestic and commercial properties.</p><p class="scard-price">From £65</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container">
+    <p class="sec-label">Why Choose ProFlow</p>
+    <h2 class="sec-h2 reveal">Numbers that speak<br>for themselves.</h2>
+    <div class="why-grid">
+      <div class="why-item reveal"><div class="why-num">2,400+</div><div class="why-label">Jobs Completed</div></div>
+      <div class="why-item reveal"><div class="why-num">60 min</div><div class="why-label">Emergency Response</div></div>
+      <div class="why-item reveal"><div class="why-num">4.9★</div><div class="why-label">Average Rating</div></div>
+      <div class="why-item reveal"><div class="why-num">12yr</div><div class="why-label">In Business</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="areas" class="areas">
+  <div class="container">
+    <p class="sec-label reveal">Coverage</p>
+    <h2 class="sec-h2 reveal">We Cover All of<br>North London</h2>
+    <div class="areas-list">
+      <div class="area-pill reveal">Islington</div><div class="area-pill reveal">Camden</div><div class="area-pill reveal">Highgate</div><div class="area-pill reveal">Finsbury Park</div>
+      <div class="area-pill reveal">Archway</div><div class="area-pill reveal">Holloway</div><div class="area-pill reveal">Muswell Hill</div><div class="area-pill reveal">Crouch End</div>
+      <div class="area-pill reveal">Stoke Newington</div><div class="area-pill reveal">Tottenham</div><div class="area-pill reveal">Wood Green</div><div class="area-pill reveal">Bounds Green</div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="container">
+    <p class="sec-label reveal">Reviews</p>
+    <h2 class="sec-h2 reveal">Trusted by 2,400+<br>London Homeowners</h2>
+    <div class="reviews-grid">
+      <div class="rcard reveal"><div class="rcard-top"><span class="rcard-stars">★★★★★</span><span class="rcard-source">Google</span></div><p class="rcard-text">"Boiler broke on a Sunday night. ProFlow had an engineer here within the hour. Fixed and heating back on. Absolutely brilliant service."</p><div class="rcard-author">David K., Islington</div></div>
+      <div class="rcard reveal"><div class="rcard-top"><span class="rcard-stars">★★★★★</span><span class="rcard-source">Checkatrade</span></div><p class="rcard-text">"Really transparent pricing — no nasty surprises. Did a full bathroom conversion for us. Spotless work and they cleaned up perfectly."</p><div class="rcard-author">Amara S., Camden</div></div>
+      <div class="rcard reveal"><div class="rcard-top"><span class="rcard-stars">★★★★★</span><span class="rcard-source">Google</span></div><p class="rcard-text">"Found a leak behind our kitchen wall. ProFlow located it without any damage and had it fixed the same day. Highly recommend."</p><div class="rcard-author">Tom & Lisa, Highgate</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta-section">
+  <div class="reveal">
+    <h2 class="cta-title">Need a plumber?<br>We're ready now.</h2>
+    <p class="cta-sub">Free quotes · No call-out fee for booked jobs · Fully insured</p>
+  </div>
+  <div class="cta-contact reveal">
+    <span class="cta-phone">0800 123 4567</span>
+    <br>
+    <button class="btn-dark">Or Request a Callback</button>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Pro<span>Flow</span> Plumbing</div>
+  <div class="f-copy">© 2025 ProFlow Plumbing Ltd. Gas Safe No. 123456. North London.</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=i*.06+'s';obs.observe(el)});
+</script>
+</body>
+</html>

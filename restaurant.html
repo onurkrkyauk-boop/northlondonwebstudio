@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Trattoria Rosso — Italian Restaurant</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#c0392b;
+  --dark-red:#8b1a1a;
+  --cream:#fdf8f2;
+  --warm:#f5ede0;
+  --charcoal:#1c1c1c;
+  --mid:#4a4a4a;
+  --muted:#888;
+  --gold:#d4a84b;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+nav.scrolled{background:rgba(253,248,242,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(28,28,28,.08)}
+.nav-logo{font-family:'Bodoni Moda',serif;font-size:1.2rem;letter-spacing:.04em;color:var(--charcoal)}
+.nav-logo span{color:var(--red)}
+.nav-links{display:flex;gap:2rem;font-size:.82rem;letter-spacing:.06em;color:var(--muted)}
+.nav-links a:hover{color:var(--red)}
+.nav-book{padding:.65rem 1.5rem;border:2px solid var(--red);color:var(--red);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:500;transition:all .3s}
+.nav-book:hover{background:var(--red);color:#fff}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--charcoal);display:flex;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1c0a0a 0%,#2d1010 30%,#1c1c1c 70%,#0f0f0f 100%)}
+.hero-pattern{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.3) 40px,rgba(255,255,255,.3) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.3) 40px,rgba(255,255,255,.3) 41px)}
+.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:8rem 3rem 4rem;max-width:700px}
+.hero-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.hero-tag::before{content:'';width:30px;height:1px;background:var(--gold)}
+.hero-h1{font-family:'Bodoni Moda',serif;font-size:clamp(3.5rem,7vw,7rem);font-weight:700;line-height:.95;color:#fff;margin-bottom:1.5rem}
+.hero-h1 em{font-style:italic;color:var(--red)}
+.hero-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,.55);line-height:1.8;max-width:420px;margin-bottom:3rem}
+.hero-actions{display:flex;gap:1rem;align-items:center}
+.btn-red{padding:.9rem 2.5rem;background:var(--red);color:#fff;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:background .3s}
+.btn-red:hover{background:var(--dark-red)}
+.btn-outline-w{padding:.9rem 2.5rem;border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;background:transparent;cursor:pointer;transition:all .3s}
+.btn-outline-w:hover{border-color:#fff}
+.hero-side{position:absolute;right:0;top:0;height:100%;width:45%;background:linear-gradient(180deg,#2d1010 0%,#8b1a1a 50%,#2d1010 100%);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-side::before{content:'TRATTORIA';font-family:'Bodoni Moda',serif;font-size:9rem;font-weight:700;color:rgba(255,255,255,.04);writing-mode:vertical-rl;letter-spacing:.2em;position:absolute}
+.hero-dish{font-size:12rem;opacity:.2;transform:rotate(-15deg)}
+
+/* STRIP */
+.strip{background:var(--red);padding:1rem 3rem;display:flex;justify-content:center;gap:4rem}
+.strip-item{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85);font-weight:500}
+
+/* MENU */
+.section{padding:6rem 3rem}
+.sec-eyebrow{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;display:flex;align-items:center;gap:.8rem}
+.sec-eyebrow::after{content:'';flex:1;height:1px;background:rgba(28,28,28,.1)}
+.sec-h2{font-family:'Bodoni Moda',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;line-height:1.05;margin-bottom:3rem}
+.sec-h2 em{font-style:italic;color:var(--red)}
+
+.menu-tabs{display:flex;gap:0;border-bottom:1px solid rgba(28,28,28,.12);margin-bottom:3rem}
+.tab{padding:.8rem 2rem;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .3s;margin-bottom:-1px}
+.tab.active{color:var(--red);border-bottom-color:var(--red)}
+.menu-panel{display:none;grid-template-columns:1fr 1fr;gap:0}
+.menu-panel.active{display:grid}
+.dish{padding:1.8rem 0;border-bottom:1px solid rgba(28,28,28,.08);display:flex;justify-content:space-between;align-items:start;gap:2rem}
+.dish:last-child{border-bottom:none}
+.dish-info h4{font-family:'Bodoni Moda',serif;font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
+.dish-info p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.dish-price{font-size:1.05rem;font-weight:500;color:var(--red);white-space:nowrap}
+.dish-col{padding:0 2rem}
+.dish-col:first-child{border-right:1px solid rgba(28,28,28,.08)}
+
+/* ATMOSPHERE */
+.atm{background:var(--charcoal);padding:6rem 3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+.atm-panel{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.06);padding:3rem 2rem;text-align:center}
+.atm-icon{font-size:2.5rem;margin-bottom:1.5rem}
+.atm-title{font-family:'Bodoni Moda',serif;font-size:1.4rem;color:#fff;margin-bottom:.8rem}
+.atm-text{font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.7}
+
+/* TESTIMONIALS */
+.testi{padding:5rem 3rem;background:var(--warm)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.tcard{padding:2rem;background:var(--cream);border:1px solid rgba(28,28,28,.08)}
+.tcard-stars{color:var(--gold);font-size:1rem;margin-bottom:1rem;letter-spacing:.1em}
+.tcard-text{font-size:.9rem;color:var(--mid);line-height:1.7;font-style:italic;margin-bottom:1rem}
+.tcard-author{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+
+/* RESERVATION */
+.reservation{padding:5rem 3rem;background:var(--red);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.res-title{font-family:'Bodoni Moda',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:#fff;line-height:1.1}
+.res-title em{font-style:italic;opacity:.7}
+.res-sub{font-size:.95rem;color:rgba(255,255,255,.65);margin-top:1rem;line-height:1.7}
+.res-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.res-input{padding:1rem 1.2rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;outline:none;grid-column:auto}
+.res-input::placeholder{color:rgba(255,255,255,.5)}
+.res-input:focus{border-color:rgba(255,255,255,.5)}
+.res-input.full{grid-column:1/-1}
+.btn-white{grid-column:1/-1;padding:1rem;background:#fff;color:var(--red);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;font-family:'Outfit',sans-serif;transition:opacity .3s}
+.btn-white:hover{opacity:.9}
+
+/* FOOTER */
+footer{background:var(--charcoal);padding:3rem;display:flex;justify-content:space-between;align-items:center}
+.f-logo{font-family:'Bodoni Moda',serif;font-size:1.1rem;color:#fff}
+.f-logo span{color:var(--red)}
+.f-info{font-size:.78rem;color:rgba(255,255,255,.35);text-align:right;line-height:1.8}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}.nav-links{display:none}
+  .hero{min-height:auto}.hero-side{display:none}.hero-content{padding:7rem 1.5rem 4rem}
+  .strip{gap:1.5rem;flex-wrap:wrap;justify-content:flex-start}
+  .section,.testi,.reservation{padding:3rem 1.5rem;grid-template-columns:1fr}
+  .menu-panel.active{grid-template-columns:1fr}
+  .dish-col:first-child{border-right:none;border-bottom:1px solid rgba(28,28,28,.08);padding-bottom:2rem}
+  .atm{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .res-form{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:1rem;text-align:center}.f-info{text-align:center}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-logo">Trattoria <span>Rosso</span></div>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#atmosphere">Experience</a>
+    <a href="#reserve">Reserve</a>
+  </div>
+  <button class="nav-book">Book a Table</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Authentic Italian · North London</div>
+    <h1 class="hero-h1">Cucina<br><em>autentica.</em></h1>
+    <p class="hero-sub">Family recipes passed down three generations. Handmade pasta, wood-fired dishes and an Italian wine list to match.</p>
+    <div class="hero-actions">
+      <button class="btn-red">Book a Table</button>
+      <button class="btn-outline-w">View Menu</button>
+    </div>
+  </div>
+  <div class="hero-side">
+    <div class="hero-dish">🍝</div>
+  </div>
+</section>
+
+<div class="strip">
+  <span class="strip-item">Handmade Pasta Daily</span>
+  <span class="strip-item">Wood-Fired Oven</span>
+  <span class="strip-item">Open 7 Days</span>
+  <span class="strip-item">Private Dining Available</span>
+</div>
+
+<section id="menu" class="section">
+  <p class="sec-eyebrow reveal">Il Menu</p>
+  <h2 class="sec-h2 reveal">Fresh, <em>seasonal</em> Italian.</h2>
+  <div class="menu-tabs">
+    <div class="tab active" onclick="switchTab(this,'antipasti')">Antipasti</div>
+    <div class="tab" onclick="switchTab(this,'pasta')">Pasta</div>
+    <div class="tab" onclick="switchTab(this,'secondi')">Secondi</div>
+    <div class="tab" onclick="switchTab(this,'dolci')">Dolci</div>
+  </div>
+  <div id="antipasti" class="menu-panel active">
+    <div class="dish-col">
+      <div class="dish"><div class="dish-info"><h4>Burrata & Pomodori</h4><p>Creamy burrata, heritage tomatoes, basil oil, sea salt</p></div><span class="dish-price">£12</span></div>
+      <div class="dish"><div class="dish-info"><h4>Carpaccio di Manzo</h4><p>Thinly sliced beef, rocket, shaved parmesan, truffle oil</p></div><span class="dish-price">£14</span></div>
+      <div class="dish"><div class="dish-info"><h4>Bruschetta al Pomodoro</h4><p>Wood-fired bread, san marzano tomatoes, garlic, basil</p></div><span class="dish-price">£8</span></div>
+    </div>
+    <div class="dish-col">
+      <div class="dish"><div class="dish-info"><h4>Zuppa del Giorno</h4><p>Soup of the day, served with focaccia</p></div><span class="dish-price">£9</span></div>
+      <div class="dish"><div class="dish-info"><h4>Cozze al Vino Bianco</h4><p>Steamed mussels, white wine, garlic, parsley, cream</p></div><span class="dish-price">£13</span></div>
+      <div class="dish"><div class="dish-info"><h4>Arancini Tartufati</h4><p>Truffle risotto balls, mozzarella centre, marinara</p></div><span class="dish-price">£10</span></div>
+    </div>
+  </div>
+  <div id="pasta" class="menu-panel">
+    <div class="dish-col">
+      <div class="dish"><div class="dish-info"><h4>Spaghetti alla Carbonara</h4><p>Guanciale, egg yolk, pecorino romano, black pepper</p></div><span class="dish-price">£16</span></div>
+      <div class="dish"><div class="dish-info"><h4>Pappardelle al Cinghiale</h4><p>Wild boar ragù, fresh pappardelle, pecorino</p></div><span class="dish-price">£19</span></div>
+    </div>
+    <div class="dish-col">
+      <div class="dish"><div class="dish-info"><h4>Tagliatelle al Tartufo</h4><p>Handmade tagliatelle, black truffle, butter, parmesan</p></div><span class="dish-price">£22</span></div>
+      <div class="dish"><div class="dish-info"><h4>Gnocchi al Pesto</h4><p>Potato gnocchi, house basil pesto, toasted pine nuts</p></div><span class="dish-price">£15</span></div>
+    </div>
+  </div>
+  <div id="secondi" class="menu-panel">
+    <div class="dish-col">
+      <div class="dish"><div class="dish-info"><h4>Bistecca Fiorentina</h4><p>T-bone steak, rosemary, lemon, roasted potatoes</p></div><span class="dish-price">£38</span></div>
+      <div class="dish"><div class="dish-info"><h4>Branzino al Forno</h4><p>Wood-roasted sea bass, capers, olives, cherry tomatoes</p></div><span class="dish-price">£26</span></div>
+    </div>
+    <div class="dish-col">
+      <div class="dish"><div class="dish-info"><h4>Pollo alla Milanese</h4><p>Breaded chicken breast, arugula, lemon, parmesan</p></div><span class="dish-price">£22</span></div>
+      <div class="dish"><div class="dish-info"><h4>Agnello in Umido</h4><p>Slow-braised lamb, root vegetables, red wine, gremolata</p></div><span class="dish-price">£28</span></div>
+    </div>
+  </div>
+  <div id="dolci" class="menu-panel">
+    <div class="dish-col">
+      <div class="dish"><div class="dish-info"><h4>Tiramisù</h4><p>Mascarpone, savoiardi, espresso, cocoa — made in-house</p></div><span class="dish-price">£8</span></div>
+      <div class="dish"><div class="dish-info"><h4>Panna Cotta</h4><p>Vanilla panna cotta, mixed berry compote</p></div><span class="dish-price">£7</span></div>
+    </div>
+    <div class="dish-col">
+      <div class="dish"><div class="dish-info"><h4>Cannoli Siciliani</h4><p>Ricotta filling, pistachio, dark chocolate chips</p></div><span class="dish-price">£7</span></div>
+      <div class="dish"><div class="dish-info"><h4>Gelato Artigianale</h4><p>Three scoops, daily selection, waffle cone or cup</p></div><span class="dish-price">£6</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="atmosphere" class="atm">
+  <div class="atm-panel reveal"><div class="atm-icon">🍷</div><h3 class="atm-title">Italian Wine List</h3><p class="atm-text">Over 80 Italian labels, from Super Tuscans to Sicilian whites — curated by our sommelier.</p></div>
+  <div class="atm-panel reveal"><div class="atm-icon">🔥</div><h3 class="atm-title">Wood-Fired Kitchen</h3><p class="atm-text">Our open kitchen centres around a 500°C wood-fired oven, imported from Naples.</p></div>
+  <div class="atm-panel reveal"><div class="atm-icon">🌿</div><h3 class="atm-title">Private Dining</h3><p class="atm-text">A secluded dining room for up to 20 guests. Perfect for celebrations and business dinners.</p></div>
+</section>
+
+<section class="testi">
+  <div class="sec-eyebrow reveal">Reviews</div>
+  <h2 class="sec-h2 reveal">What our guests <em>say.</em></h2>
+  <div class="testi-grid">
+    <div class="tcard reveal"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"The best carbonara I've had outside of Rome. An absolute gem in North London."</p><div class="tcard-author">— Sofia R., Google Review</div></div>
+    <div class="tcard reveal"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Beautiful atmosphere, impeccable service and the pappardelle was simply outstanding."</p><div class="tcard-author">— James M., TripAdvisor</div></div>
+    <div class="tcard reveal"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"We book the private room for every company dinner. Never disappoints."</p><div class="tcard-author">— Claire B., Google Review</div></div>
+  </div>
+</section>
+
+<section id="reserve" class="reservation">
+  <div class="reveal">
+    <h2 class="res-title">Reserve your<br><em>table tonight.</em></h2>
+    <p class="res-sub">Book online or call us on 020 8765 4321. We take reservations up to 6 weeks in advance.</p>
+  </div>
+  <form class="res-form reveal" onsubmit="return false">
+    <input class="res-input" type="text" placeholder="Your name" />
+    <input class="res-input" type="email" placeholder="Email address" />
+    <input class="res-input" type="text" placeholder="Date" />
+    <input class="res-input" type="text" placeholder="Number of guests" />
+    <textarea class="res-input full" placeholder="Any special requests?" rows="3" style="resize:none"></textarea>
+    <button class="btn-white">Reserve My Table</button>
+  </form>
+</section>
+
+<footer>
+  <div class="f-logo">Trattoria <span>Rosso</span></div>
+  <div class="f-info">12 Archway Road, London N6 5AQ<br>open@trattoriarosso.co.uk · 020 8765 4321</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+function switchTab(el,id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=i*.07+'s';obs.observe(el)});
+</script>
+</body>
+</html>

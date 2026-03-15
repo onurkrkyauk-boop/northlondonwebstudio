@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>The Sharp Cut — Barbershop</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0c0c0c;
+  --dark:#161616;
+  --panel:#1e1e1e;
+  --border:rgba(255,255,255,0.08);
+  --gold:#c9a84c;
+  --gold-light:#e8c87a;
+  --cream:#f8f4ed;
+  --white:#ffffff;
+  --muted:rgba(255,255,255,0.45);
+  --text:rgba(255,255,255,0.88);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Raleway',sans-serif;background:var(--black);color:var(--text);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background .4s,border .4s}
+nav.scrolled{background:rgba(12,12,12,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.12em;color:var(--white)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.nav-links a:hover{color:var(--gold)}
+.nav-book{padding:.65rem 1.5rem;background:var(--gold);color:var(--black);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-family:'Raleway',sans-serif;border:none;cursor:pointer;transition:background .3s}
+.nav-book:hover{background:var(--gold-light)}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--black);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:8rem 3rem 4rem;position:relative;z-index:2}
+.hero-line{width:40px;height:2px;background:var(--gold);margin-bottom:2rem}
+.hero-tag{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,9vw,10rem);line-height:.92;letter-spacing:.03em;color:var(--white);margin-bottom:2rem}
+.hero-h1 span{color:var(--gold);display:block}
+.hero-sub{font-size:.95rem;font-weight:300;color:var(--muted);line-height:1.8;max-width:360px;margin-bottom:3rem}
+.hero-btns{display:flex;gap:1rem;align-items:center}
+.btn-gold{padding:.9rem 2.5rem;background:var(--gold);color:var(--black);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;font-family:'Raleway',sans-serif;transition:background .3s}
+.btn-gold:hover{background:var(--gold-light)}
+.btn-ghost{padding:.9rem 2.5rem;border:1px solid var(--border);color:var(--text);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:transparent;cursor:pointer;font-family:'Raleway',sans-serif;transition:all .3s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border)}
+.hstat-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);letter-spacing:.05em;line-height:1}
+.hstat-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+.hero-right{position:relative;overflow:hidden}
+.hero-right-bg{position:absolute;inset:0;background:linear-gradient(180deg,#1a1208 0%,#2a1f0c 50%,#0c0c0c 100%)}
+.hero-barber-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;font-size:18rem;color:rgba(201,168,76,.05);white-space:nowrap;letter-spacing:.05em;user-select:none}
+.hero-scissors{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:10rem;opacity:.08;transform:translate(-50%,-50%) rotate(-30deg)}
+
+/* MARQUEE */
+.marquee-bar{background:var(--gold);padding:.8rem 0;overflow:hidden}
+.marquee-track{display:flex;animation:marquee 20s linear infinite;white-space:nowrap}
+.marquee-item{font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.2em;color:var(--black);padding:0 2.5rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SERVICES */
+.section{padding:6rem 3rem}
+.sec-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,5vw,5rem);letter-spacing:.03em;color:var(--white);line-height:.95;margin-bottom:3rem}
+.sec-title span{color:var(--gold)}
+
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border)}
+.service{background:var(--dark);padding:2.5rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;transition:background .3s;cursor:default}
+.service:hover{background:var(--panel)}
+.service-left{display:flex;align-items:center;gap:1.5rem}
+.service-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:rgba(201,168,76,.25);letter-spacing:.05em;flex-shrink:0;width:40px}
+.service-icon{font-size:1.8rem;flex-shrink:0}
+.service-name{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:.3rem}
+.service-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+.service-price{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);letter-spacing:.05em;flex-shrink:0}
+.service-duration{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;margin-top:.2rem}
+
+/* BARBERS */
+.barbers-section{background:var(--dark);padding:6rem 3rem}
+.barbers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.barber-card{border:1px solid var(--border);background:var(--panel);overflow:hidden;transition:border-color .3s}
+.barber-card:hover{border-color:var(--gold)}
+.barber-photo{height:280px;background:linear-gradient(180deg,#2a1f0c,#1a1208);display:flex;align-items:center;justify-content:center;font-size:6rem;position:relative;overflow:hidden}
+.barber-photo::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,var(--panel) 100%)}
+.barber-body{padding:1.5rem}
+.barber-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.05em;color:var(--white);line-height:1}
+.barber-role{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:.3rem 0 .8rem}
+.barber-bio{font-size:.85rem;color:var(--muted);line-height:1.6}
+.barber-book{display:block;margin-top:1.2rem;padding:.7rem;background:transparent;border:1px solid var(--border);color:var(--text);text-align:center;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:'Raleway',sans-serif;transition:all .3s}
+.barber-book:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
+
+/* GALLERY GRID */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px;gap:2px;background:var(--black)}
+.gallery-item{background:linear-gradient(135deg,#2a1f0c,#1a1208);display:flex;align-items:center;justify-content:center;font-size:3rem;opacity:.4;transition:opacity .3s;cursor:pointer}
+.gallery-item:hover{opacity:.7}
+.gallery-item.tall{grid-row:1/3}
+
+/* BOOKING */
+.booking{padding:6rem 3rem;background:var(--black);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.booking-info .sec-label{color:var(--gold)}
+.booking-info .sec-title{color:var(--white)}
+.info-row{display:flex;justify-content:space-between;padding:1.1rem 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.info-day{font-weight:500;color:var(--white)}
+.info-time{color:var(--muted)}
+.booking-form{display:flex;flex-direction:column;gap:1rem}
+.form-input{padding:1rem 1.2rem;background:var(--panel);border:1px solid var(--border);color:var(--white);font-family:'Raleway',sans-serif;font-size:.9rem;outline:none;transition:border-color .3s}
+.form-input::placeholder{color:var(--muted)}
+.form-input:focus{border-color:var(--gold)}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+
+/* CONTACT */
+.contact-bar{background:var(--gold);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem}
+.contact-items{display:flex;gap:4rem;flex-wrap:wrap}
+.ci-label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.5);margin-bottom:.3rem}
+.ci-val{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.05em;color:var(--black)}
+.btn-black{padding:.9rem 2.5rem;background:var(--black);color:var(--gold);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;font-family:'Raleway',sans-serif;transition:opacity .3s}
+.btn-black:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--dark);padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.1em;color:var(--white)}
+.f-logo span{color:var(--gold)}
+.f-copy{font-size:.75rem;color:var(--muted)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}.nav-links{display:none}
+  .hero{grid-template-columns:1fr}.hero-right{display:none}
+  .hero-left{padding:7rem 1.5rem 4rem}
+  .section,.barbers-section,.booking{padding:4rem 1.5rem;grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .barbers-grid,.gallery{grid-template-columns:1fr 1fr}
+  .gallery-item.tall{grid-row:auto}
+  .booking{gap:3rem}
+  footer,.contact-bar{flex-direction:column;gap:1rem}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-logo">The <span>Sharp</span> Cut</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#barbers">Our Barbers</a>
+    <a href="#booking">Book</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav-book">Book Now</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-line"></div>
+    <p class="hero-tag">Premium Barbershop · North London</p>
+    <h1 class="hero-h1">Sharp.<br><span>Clean.</span><br>Confident.</h1>
+    <p class="hero-sub">North London's finest barbershop. Expert cuts, hot towel shaves and grooming done right — since 2015.</p>
+    <div class="hero-btns">
+      <button class="btn-gold">Book an Appointment</button>
+      <button class="btn-ghost">Our Services</button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hstat-num">4,200+</div><div class="hstat-label">Cuts Done</div></div>
+      <div><div class="hstat-num">10yr</div><div class="hstat-label">Experience</div></div>
+      <div><div class="hstat-num">4.9★</div><div class="hstat-label">Google</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="hero-barber-text">✂</div>
+    <div class="hero-scissors">✂</div>
+  </div>
+</section>
+
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="marquee-item">Haircuts</span><span class="marquee-item">·</span>
+    <span class="marquee-item">Beard Trims</span><span class="marquee-item">·</span>
+    <span class="marquee-item">Hot Towel Shave</span><span class="marquee-item">·</span>
+    <span class="marquee-item">Skin Fades</span><span class="marquee-item">·</span>
+    <span class="marquee-item">Hair Colouring</span><span class="marquee-item">·</span>
+    <span class="marquee-item">Kids Cuts</span><span class="marquee-item">·</span>
+    <span class="marquee-item">Haircuts</span><span class="marquee-item">·</span>
+    <span class="marquee-item">Beard Trims</span><span class="marquee-item">·</span>
+    <span class="marquee-item">Hot Towel Shave</span><span class="marquee-item">·</span>
+    <span class="marquee-item">Skin Fades</span><span class="marquee-item">·</span>
+    <span class="marquee-item">Hair Colouring</span><span class="marquee-item">·</span>
+    <span class="marquee-item">Kids Cuts</span><span class="marquee-item">·</span>
+  </div>
+</div>
+
+<section id="services" class="section">
+  <p class="sec-label reveal">What We Offer</p>
+  <h2 class="sec-title reveal">Our <span>Services</span></h2>
+  <div class="services-grid">
+    <div class="service reveal"><div class="service-left"><span class="service-num">01</span><span class="service-icon">✂️</span><div><div class="service-name">Classic Haircut</div><div class="service-desc">Scissor or clipper cut, styled and finished</div></div></div><div><div class="service-price">£25</div><div class="service-duration">30–45 min</div></div></div>
+    <div class="service reveal"><div class="service-left"><span class="service-num">02</span><span class="service-icon">⚡</span><div><div class="service-name">Skin Fade</div><div class="service-desc">Precision fade with detailed line work</div></div></div><div><div class="service-price">£30</div><div class="service-duration">45–60 min</div></div></div>
+    <div class="service reveal"><div class="service-left"><span class="service-num">03</span><span class="service-icon">🪒</span><div><div class="service-name">Hot Towel Shave</div><div class="service-desc">Traditional straight razor shave, hot towels included</div></div></div><div><div class="service-price">£35</div><div class="service-duration">45 min</div></div></div>
+    <div class="service reveal"><div class="service-left"><span class="service-num">04</span><span class="service-icon">🧔</span><div><div class="service-name">Beard Trim & Shape</div><div class="service-desc">Full beard sculpt, line up and conditioning</div></div></div><div><div class="service-price">£18</div><div class="service-duration">20–30 min</div></div></div>
+    <div class="service reveal"><div class="service-left"><span class="service-num">05</span><span class="service-icon">🎨</span><div><div class="service-name">Cut & Colour</div><div class="service-desc">Haircut plus professional colouring service</div></div></div><div><div class="service-price">£55</div><div class="service-duration">90 min</div></div></div>
+    <div class="service reveal"><div class="service-left"><span class="service-num">06</span><span class="service-icon">👦</span><div><div class="service-name">Kids Cut (Under 12)</div><div class="service-desc">Patient, fun cuts for children</div></div></div><div><div class="service-price">£15</div><div class="service-duration">20–30 min</div></div></div>
+  </div>
+</section>
+
+<section id="barbers" class="barbers-section">
+  <p class="sec-label reveal">The Team</p>
+  <h2 class="sec-title reveal" style="color:var(--white)">Meet Your <span>Barbers</span></h2>
+  <div class="barbers-grid">
+    <div class="barber-card reveal"><div class="barber-photo">✂</div><div class="barber-body"><div class="barber-name">Marcus Reid</div><div class="barber-role">Master Barber · 14 Years</div><p class="barber-bio">Trained in London and New York, Marcus is known for his precision fades and beard sculpts.</p><button class="barber-book">Book Marcus</button></div></div>
+    <div class="barber-card reveal"><div class="barber-photo">🪒</div><div class="barber-body"><div class="barber-name">Joe Okafor</div><div class="barber-role">Senior Barber · 8 Years</div><p class="barber-bio">Joe specialises in textured hair, skin fades and classic barbering with a modern edge.</p><button class="barber-book">Book Joe</button></div></div>
+    <div class="barber-card reveal"><div class="barber-photo">💈</div><div class="barber-body"><div class="barber-name">Luca Ferretti</div><div class="barber-role">Barber · 5 Years</div><p class="barber-bio">Italian-trained, Luca brings European style to every cut. Known for his sharp lines and detailed work.</p><button class="barber-book">Book Luca</button></div></div>
+  </div>
+</section>
+
+<div class="gallery">
+  <div class="gallery-item tall">✂</div>
+  <div class="gallery-item">💈</div>
+  <div class="gallery-item">🪒</div>
+  <div class="gallery-item">🧔</div>
+  <div class="gallery-item">✂</div>
+  <div class="gallery-item tall">💈</div>
+  <div class="gallery-item">🪒</div>
+</div>
+
+<section id="booking" class="booking">
+  <div class="booking-info reveal">
+    <p class="sec-label">Opening Hours</p>
+    <h2 class="sec-title">When to <span>Visit.</span></h2>
+    <div class="info-row"><span class="info-day">Monday – Friday</span><span class="info-time">9:00 am – 7:00 pm</span></div>
+    <div class="info-row"><span class="info-day">Saturday</span><span class="info-time">8:00 am – 6:00 pm</span></div>
+    <div class="info-row"><span class="info-day">Sunday</span><span class="info-time">10:00 am – 4:00 pm</span></div>
+    <div style="margin-top:2rem;padding:1.2rem;border:1px solid var(--border);font-size:.85rem;color:var(--muted)">
+      📍 28 Fortess Road, Tufnell Park, London NW5 2EN<br>
+      <span style="color:var(--gold);margin-top:.5rem;display:block">020 7234 5678</span>
+    </div>
+  </div>
+  <div class="reveal">
+    <p class="sec-label">Book Online</p>
+    <h2 class="sec-title">Reserve Your <span>Seat.</span></h2>
+    <div class="booking-form">
+      <input class="form-input" type="text" placeholder="Your name"/>
+      <input class="form-input" type="tel" placeholder="Phone number"/>
+      <select class="form-input form-select" style="background-color:var(--panel);color:var(--white)">
+        <option value="" disabled selected>Select a barber</option>
+        <option>Marcus Reid</option>
+        <option>Joe Okafor</option>
+        <option>Luca Ferretti</option>
+        <option>Any available</option>
+      </select>
+      <select class="form-input form-select" style="background-color:var(--panel);color:var(--white)">
+        <option value="" disabled selected>Select a service</option>
+        <option>Classic Haircut — £25</option>
+        <option>Skin Fade — £30</option>
+        <option>Hot Towel Shave — £35</option>
+        <option>Beard Trim — £18</option>
+        <option>Cut & Colour — £55</option>
+      </select>
+      <input class="form-input" type="text" placeholder="Preferred date & time"/>
+      <button class="btn-gold">Confirm Booking</button>
+    </div>
+  </div>
+</section>
+
+<div id="contact" class="contact-bar">
+  <div class="contact-items">
+    <div><div class="ci-label">Phone</div><div class="ci-val">020 7234 5678</div></div>
+    <div><div class="ci-label">Address</div><div class="ci-val">28 Fortess Road, NW5</div></div>
+    <div><div class="ci-label">Instagram</div><div class="ci-val">@thesharpcut</div></div>
+  </div>
+  <button class="btn-black">Book an Appointment</button>
+</div>
+
+<footer>
+  <div class="f-logo">The <span>Sharp</span> Cut</div>
+  <div class="f-copy">© 2025 The Sharp Cut Barbershop. North London.</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=i*.07+'s';obs.observe(el)});
+</script>
+</body>
+</html>

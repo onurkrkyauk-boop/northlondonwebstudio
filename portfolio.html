@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Our Work — North London Web Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a0a;
+  --panel:#141414;
+  --card:#1a1a1a;
+  --border:rgba(255,255,255,0.08);
+  --gold:#c8a96e;
+  --gold-light:#e8c98e;
+  --white:#f5f3ef;
+  --muted:rgba(245,243,239,0.45);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;letter-spacing:.04em}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{padding:.6rem 1.4rem;background:var(--gold);color:var(--black);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .3s}
+.nav-cta:hover{background:var(--gold-light)}
+
+/* HERO */
+.hero{padding:9rem 3rem 5rem;max-width:1200px;margin:0 auto}
+.hero-eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,6rem);font-weight:700;line-height:1.02;max-width:700px;margin-bottom:1.5rem}
+.hero-h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:1rem;font-weight:300;color:var(--muted);max-width:520px;line-height:1.8;margin-bottom:3rem}
+.hero-tags{display:flex;gap:.8rem;flex-wrap:wrap}
+.tag{padding:.45rem 1.1rem;border:1px solid var(--border);font-size:.75rem;letter-spacing:.08em;color:var(--muted);cursor:pointer;transition:all .3s}
+.tag:hover,.tag.active{border-color:var(--gold);color:var(--gold);background:rgba(200,169,110,.06)}
+
+/* GRID */
+.portfolio-grid{max-width:1200px;margin:0 auto;padding:0 3rem 6rem;display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border)}
+.portfolio-item{background:var(--card);position:relative;overflow:hidden;cursor:pointer;group:true}
+.portfolio-item.featured{grid-column:1/-1}
+
+.preview-frame{width:100%;height:400px;overflow:hidden;position:relative;pointer-events:none}
+.portfolio-item.featured .preview-frame{height:520px}
+.preview-frame iframe{width:200%;height:200%;transform:scale(0.5);transform-origin:top left;border:none;pointer-events:none}
+
+.item-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,rgba(10,10,10,.3) 50%,transparent 70%);opacity:0;transition:opacity .4s;display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem}
+.portfolio-item:hover .item-overlay{opacity:1}
+.item-type{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.item-name{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--white);margin-bottom:.5rem}
+.item-desc{font-size:.85rem;color:rgba(245,243,239,.65);line-height:1.5;max-width:400px;margin-bottom:1.5rem}
+.item-actions{display:flex;gap:.8rem}
+.btn-preview{padding:.65rem 1.4rem;background:var(--gold);color:var(--black);font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .3s}
+.btn-preview:hover{background:var(--gold-light)}
+.btn-open{padding:.65rem 1.4rem;border:1px solid rgba(245,243,239,.25);color:var(--white);font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .3s}
+.btn-open:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Label tag top-left */
+.item-badge{position:absolute;top:1.2rem;left:1.2rem;background:var(--gold);color:var(--black);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;z-index:2}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s;backdrop-filter:blur(8px)}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{width:90vw;max-width:1300px;height:88vh;background:var(--panel);border:1px solid var(--border);display:flex;flex-direction:column;position:relative;transform:scale(.95);transition:transform .35s}
+.modal-overlay.open .modal{transform:scale(1)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid var(--border);flex-shrink:0}
+.modal-info{display:flex;align-items:center;gap:1rem}
+.modal-dots{display:flex;gap:.4rem}
+.modal-dot{width:10px;height:10px;border-radius:50%;background:var(--border)}
+.modal-url{padding:.35rem .9rem;background:rgba(255,255,255,.05);border:1px solid var(--border);font-size:.78rem;color:var(--muted);min-width:200px;border-radius:2px}
+.modal-title{font-size:.82rem;font-weight:500;color:var(--muted)}
+.modal-actions{display:flex;gap:.8rem;align-items:center}
+.modal-open-btn{padding:.5rem 1.1rem;background:var(--gold);color:var(--black);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.modal-close{width:34px;height:34px;border:1px solid var(--border);background:transparent;color:var(--white);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;border-radius:2px}
+.modal-close:hover{background:rgba(255,255,255,.1)}
+.modal-body{flex:1;overflow:hidden;position:relative}
+.modal-iframe{width:100%;height:100%;border:none;display:block}
+
+/* LOADING */
+.modal-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--panel);flex-direction:column;gap:1rem}
+.loading-spinner{width:36px;height:36px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:.8rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+
+/* CTA */
+.cta-strip{background:var(--gold);padding:4rem 3rem;text-align:center}
+.cta-h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:var(--black);margin-bottom:1rem}
+.cta-h2 em{font-style:italic;opacity:.6}
+.cta-sub{font-size:1rem;color:rgba(0,0,0,.55);margin-bottom:2rem}
+.btn-dark{padding:.9rem 2.5rem;background:var(--black);color:var(--gold);font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity .3s}
+.btn-dark:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--panel);padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.f-logo{font-family:'Playfair Display',serif;font-size:.95rem}
+.f-logo span{color:var(--gold)}
+.f-copy{font-size:.75rem;color:var(--muted)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}.nav-links{display:none}
+  .hero,.portfolio-grid{padding-left:1.5rem;padding-right:1.5rem}
+  .portfolio-grid{grid-template-columns:1fr}
+  .portfolio-item.featured{grid-column:auto}
+  .modal{width:98vw;height:92vh}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">North London <span>Web Studio</span></a>
+  <div class="nav-links">
+    <a href="index.html#services">Services</a>
+    <a href="index.html#about">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('modal').classList.add('open')">Get a Free Consultation</button>
+</nav>
+
+<div class="hero">
+  <p class="hero-eyebrow reveal">Our Work</p>
+  <h1 class="hero-h1 reveal">Example websites<br>for <em>local businesses.</em></h1>
+  <p class="hero-sub reveal">Every business deserves a website that looks professional and works hard. Here's what we can build for you — click any example to see it full size.</p>
+  <div class="hero-tags reveal">
+    <span class="tag active" onclick="filterItems('all',this)">All</span>
+    <span class="tag" onclick="filterItems('coffee',this)">Coffee Shop</span>
+    <span class="tag" onclick="filterItems('restaurant',this)">Restaurant</span>
+    <span class="tag" onclick="filterItems('plumber',this)">Plumber</span>
+    <span class="tag" onclick="filterItems('supermarket',this)">Supermarket</span>
+    <span class="tag" onclick="filterItems('barber',this)">Barber</span>
+  </div>
+</div>
+
+<div class="portfolio-grid" id="grid">
+
+  <div class="portfolio-item featured reveal" data-category="barber" data-file="barber.html" data-name="The Sharp Cut" data-type="Barbershop">
+    <div class="item-badge">Barbershop</div>
+    <div class="preview-frame">
+      <iframe src="barber.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+    </div>
+    <div class="item-overlay">
+      <p class="item-type">Barbershop · Dark Luxury</p>
+      <h2 class="item-name">The Sharp Cut</h2>
+      <p class="item-desc">Premium barbershop website with service menu, barber profiles, online booking form and opening hours. Bold dark aesthetic with gold accents.</p>
+      <div class="item-actions">
+        <button class="btn-preview" onclick="openModal('barber.html','The Sharp Cut')">Preview Full Size</button>
+        <a class="btn-open" href="barber.html" target="_blank">Open in New Tab ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="portfolio-item reveal" data-category="coffee" data-file="coffee.html" data-name="Ember & Bean" data-type="Coffee Shop">
+    <div class="item-badge">Coffee Shop</div>
+    <div class="preview-frame">
+      <iframe src="coffee.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+    </div>
+    <div class="item-overlay">
+      <p class="item-type">Coffee Shop · Warm Luxury</p>
+      <h2 class="item-name">Ember & Bean</h2>
+      <p class="item-desc">Artisan coffee shop with full menu, opening hours, about section and contact details. Warm cream and gold palette.</p>
+      <div class="item-actions">
+        <button class="btn-preview" onclick="openModal('coffee.html','Ember & Bean — Coffee Shop')">Preview Full Size</button>
+        <a class="btn-open" href="coffee.html" target="_blank">Open ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="portfolio-item reveal" data-category="restaurant" data-file="restaurant.html" data-name="Trattoria Rosso" data-type="Restaurant">
+    <div class="item-badge">Restaurant</div>
+    <div class="preview-frame">
+      <iframe src="restaurant.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+    </div>
+    <div class="item-overlay">
+      <p class="item-type">Italian Restaurant · Bold Editorial</p>
+      <h2 class="item-name">Trattoria Rosso</h2>
+      <p class="item-desc">Full restaurant site with tabbed menu, table reservation form, testimonials and private dining. Red and gold Italian aesthetic.</p>
+      <div class="item-actions">
+        <button class="btn-preview" onclick="openModal('restaurant.html','Trattoria Rosso — Restaurant')">Preview Full Size</button>
+        <a class="btn-open" href="restaurant.html" target="_blank">Open ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="portfolio-item reveal" data-category="plumber" data-file="plumber.html" data-name="ProFlow Plumbing" data-type="Plumber">
+    <div class="item-badge">Plumber</div>
+    <div class="preview-frame">
+      <iframe src="plumber.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+    </div>
+    <div class="item-overlay">
+      <p class="item-type">Plumbing Company · Industrial</p>
+      <h2 class="item-name">ProFlow Plumbing</h2>
+      <p class="item-desc">Emergency plumber site with services, area coverage, reviews and a prominent call-to-action. Trust-first industrial design.</p>
+      <div class="item-actions">
+        <button class="btn-preview" onclick="openModal('plumber.html','ProFlow Plumbing')">Preview Full Size</button>
+        <a class="btn-open" href="plumber.html" target="_blank">Open ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="portfolio-item featured reveal" data-category="supermarket" data-file="supermarket.html" data-name="GreenLeaf Market" data-type="Supermarket">
+    <div class="item-badge">Supermarket</div>
+    <div class="preview-frame">
+      <iframe src="supermarket.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+    </div>
+    <div class="item-overlay">
+      <p class="item-type">Local Supermarket · Fresh & Modern</p>
+      <h2 class="item-name">GreenLeaf Market</h2>
+      <p class="item-desc">Online supermarket with product categories, offer banners, product cards and delivery info. Clean green and white grocery aesthetic.</p>
+      <div class="item-actions">
+        <button class="btn-preview" onclick="openModal('supermarket.html','GreenLeaf Market — Supermarket')">Preview Full Size</button>
+        <a class="btn-open" href="supermarket.html" target="_blank">Open ↗</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modalBox">
+    <div class="modal-header">
+      <div class="modal-info">
+        <div class="modal-dots">
+          <div class="modal-dot"></div>
+          <div class="modal-dot"></div>
+          <div class="modal-dot"></div>
+        </div>
+        <div class="modal-url" id="modalUrl">northlondonwebstudio.co.uk</div>
+      </div>
+      <span class="modal-title" id="modalTitle">Preview</span>
+      <div class="modal-actions">
+        <button class="modal-open-btn" id="modalOpenBtn" onclick="openInTab()">Open in New Tab ↗</button>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-loading" id="modalLoading">
+        <div class="loading-spinner"></div>
+        <span class="loading-text">Loading preview…</span>
+      </div>
+      <iframe class="modal-iframe" id="modalIframe" src="about:blank" onload="iframeLoaded()"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="cta-strip">
+  <h2 class="cta-h2">Want a website like <em>these?</em></h2>
+  <p class="cta-sub">We'll build you something just as good — tailored to your business, fast and affordable.</p>
+  <a href="index.html#contact"><button class="btn-dark">Get a Free Consultation</button></a>
+</div>
+
+<footer>
+  <div class="f-logo">North London <span>Web Studio</span></div>
+  <div class="f-copy">© 2025 North London Web Studio. All rights reserved.</div>
+</footer>
+
+<script>
+let currentFile = '';
+
+function openModal(file, title) {
+  currentFile = file;
+  const modal = document.getElementById('modal');
+  const iframe = document.getElementById('modalIframe');
+  const loading = document.getElementById('modalLoading');
+  const titleEl = document.getElementById('modalTitle');
+  const urlEl = document.getElementById('modalUrl');
+
+  titleEl.textContent = title;
+  urlEl.textContent = file;
+  loading.style.display = 'flex';
+  iframe.style.opacity = '0';
+  iframe.src = file;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function iframeLoaded() {
+  const loading = document.getElementById('modalLoading');
+  const iframe = document.getElementById('modalIframe');
+  loading.style.display = 'none';
+  iframe.style.opacity = '1';
+  iframe.style.transition = 'opacity .3s';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { document.getElementById('modalIframe').src = 'about:blank'; }, 400);
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+
+function openInTab() {
+  if (currentFile) window.open(currentFile, '_blank');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Filter
+function filterItems(cat, el) {
+  document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    const show = cat === 'all' || item.dataset.category === cat;
+    item.style.display = show ? 'block' : 'none';
+  });
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = i * 0.08 + 's'; obs.observe(el); });
+</script>
+</body>
+</html>
