@@ -120,7 +120,7 @@ revealEls.forEach(el => revealObserver.observe(el));
 /* --- EmailJS Contact Form --- */
 /* ⬇️  Paste your three EmailJS values below */
 const EMAILJS_PUBLIC_KEY  = 'H1IlLlLDCiTU5KSh6';
-const EMAILJS_SERVICE_ID  = 'service_1bri0lz';
+const EMAILJS_SERVICE_ID  = 'service_92uytkm';
 const EMAILJS_TEMPLATE_ID = 'template_mrgt53c';
 
 /* Load EmailJS SDK */
