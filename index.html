@@ -1,121 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>North London Web Studio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 24px;
-      font-weight: normal;
-      color: #ddd;
-      margin-bottom: 30px;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #ccc;
-    }
-
-    .services {
-      margin-top: 50px;
-    }
-
-    .services h3,
-    .contact h3 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-
-    .services ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .services li {
-      margin: 12px 0;
-      font-size: 20px;
-    }
-
-    .contact {
-      margin-top: 60px;
-      padding-top: 30px;
-      border-top: 1px solid #333;
-    }
-
-    a {
-      color: white;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 14px 24px;
-      border: 1px solid white;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    .button:hover {
-      background: white;
-      color: #111;
-      text-decoration: none;
-    }
-  </style>
+  <meta name="description" content="North London Web Studio helps local businesses grow online with modern websites, Google Business optimisation, local SEO and booking systems." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>North London Web Studio</h1>
-    <h2>Helping Local Businesses Grow Online</h2>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <div class="brand-mark">NL</div>
+        <div>
+          <div>North London Web Studio</div>
+        </div>
+      </a>
 
-    <p>
-      We help restaurants, barbers, cafés and local businesses improve their online presence
-      with modern websites, Google Business optimisation and simple digital solutions.
-    </p>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#why">Why It Matters</a>
+        <a href="#showcase">Approach</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-    <a class="button" href="mailto:onur@northlondonwebstudio.co.uk">Get a Free Website Consultation</a>
-
-    <div class="services">
-      <h3>Our Services</h3>
-      <ul>
-        <li>Website Design</li>
-        <li>Google Business Optimisation</li>
-        <li>Local SEO</li>
-        <li>Online Booking Systems</li>
-      </ul>
+      <a class="nav-cta" href="#contact">Free Consultation</a>
     </div>
+  </nav>
 
-    <div class="contact">
-      <h3>Contact</h3>
-      <p>Email: <a href="mailto:onur@northlondonwebstudio.co.uk">onur@northlondonwebstudio.co.uk</a></p>
-      <p>Phone: +44 790 286 2014</p>
-      <p>Website: <a href="#">northlondonwebstudio.co.uk</a></p>
-    </div>
-  </div>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal visible">
+          <div class="eyebrow">Helping local businesses look stronger online</div>
+          <h1>Websites that make local businesses look professional and easy to trust.</h1>
+          <p>
+            We help restaurants, barbers, cafés and service businesses improve their online presence with modern websites, Google Business optimisation, local SEO and simple booking solutions.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:onur@northlondonwebstudio.co.uk?subject=Free%20Website%20Consultation">Get a Free Website Consultation</a>
+            <a class="btn" href="#services">See Our Services</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>1 page</strong>
+              <span>Simple landing sites for quick launch</span>
+            </div>
+            <div class="stat">
+              <strong>Mobile-first</strong>
+              <span>Clean on phones, tablets and desktops</span>
+            </div>
+            <div class="stat">
+              <strong>Local focus</strong>
+              <span>Built for nearby customers and Google visibility</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <div class="browser">
+            <div class="browser-top">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="browser-body">
+              <div class="mini-hero">
+                <h3>Example outcome for a local business</h3>
+                <p>A clearer first impression, stronger contact details and a cleaner online presence.</p>
+              </div>
+
+              <ul class="mini-list">
+                <li>Modern design that feels trustworthy</li>
+                <li>Fast access to contact details and services</li>
+                <li>Stronger Google Business presentation</li>
+                <li>Simple call-to-action for bookings or enquiries</li>
+              </ul>
+
+              <ul class="audit">
+                <li>Website design</li>
+                <li>Google Business optimisation</li>
+                <li>Local SEO basics</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-intro reveal">
+          <div>
+            <h2>Services built for local businesses</h2>
+            <p>Simple, practical digital services that help businesses look better and convert more visitors into customers.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="icon">⌘</div>
+            <h3>Website Design</h3>
+            <p>Clean, modern websites that make your business easier to trust and easier to contact.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon">◎</div>
+            <h3>Google Business Optimisation</h3>
+            <p>Better presentation on Google Maps with stronger business details, images and local visibility.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon">↗</div>
+            <h3>Local SEO</h3>
+            <p>Improve how your business appears in local search results when nearby customers are looking.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon">☰</div>
+            <h3>Booking &amp; Menus</h3>
+            <p>Simple online menus, enquiry forms and booking flows that reduce friction for customers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="section">
+      <div class="container">
+        <div class="section-intro reveal">
+          <div>
+            <h2>Why this matters</h2>
+            <p>Many local businesses lose trust online before a customer ever calls or walks in.</p>
+          </div>
+        </div>
+
+        <div class="problems">
+          <article class="problem-card reveal">
+            <span class="problem-number">01</span>
+            <h3>No clear website</h3>
+            <p>Customers cannot quickly see services, opening times, menus or key contact details.</p>
+          </article>
+          <article class="problem-card reveal">
+            <span class="problem-number">02</span>
+            <h3>Weak first impression</h3>
+            <p>Old design, poor layout or missing information can make a good business look less trustworthy.</p>
+          </article>
+          <article class="problem-card reveal">
+            <span class="problem-number">03</span>
+            <h3>Missed local traffic</h3>
+            <p>If the business is hard to find or unclear online, nearby customers often go elsewhere.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="showcase" class="section">
+      <div class="container">
+        <div class="section-intro reveal">
+          <div>
+            <h2>A cleaner, more professional online presence</h2>
+            <p>Designed to feel modern, straightforward and easy for local customers to use.</p>
+          </div>
+        </div>
+
+        <div class="showcase">
+          <article class="showcase-card reveal">
+            <div class="showcase-top">
+              <strong>Modern business landing page</strong>
+              <span class="pill">Website concept</span>
+            </div>
+            <div class="showcase-body">
+              <div class="site-sim">
+                <div class="site-sim-bar">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+                <div class="site-sim-line" style="width: 68%;"></div>
+                <div class="site-sim-line" style="width: 44%;"></div>
+                <div class="site-sim-box"></div>
+                <div class="site-sim-line" style="width: 84%;"></div>
+                <div class="site-sim-line" style="width: 57%;"></div>
+              </div>
+              <p>Focused on trust, clarity and getting customers to take action quickly.</p>
+            </div>
+          </article>
+
+          <article class="showcase-card reveal">
+            <div class="showcase-top">
+              <strong>Customer experience</strong>
+              <span class="pill">Why simple works</span>
+            </div>
+            <div class="showcase-body">
+              <div class="testimonial">
+                "If a business looks clear and professional online, people are more likely to call, visit or book."
+              </div>
+              <ul class="mini-list">
+                <li>Clear services and contact details</li>
+                <li>Better-looking first impression</li>
+                <li>More confidence from new customers</li>
+                <li>Stronger local credibility</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact-wrap">
+        <div class="contact-card reveal">
+          <div class="contact-copy">
+            <h2>Free Website Consultation</h2>
+            <p>If you want to improve your business online, get in touch and we can discuss a simple plan.</p>
+          </div>
+
+          <div class="contact-items">
+            <div class="contact-item">
+              <strong>Email</strong>
+              <a href="mailto:onur@northlondonwebstudio.co.uk">onur@northlondonwebstudio.co.uk</a>
+            </div>
+            <div class="contact-item">
+              <strong>Phone</strong>
+              <a href="tel:+447902862014">+44 790 286 2014</a>
+            </div>
+            <div class="contact-item">
+              <strong>Area</strong>
+              <span>North London and nearby local businesses</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form reveal">
+          <form action="mailto:onur@northlondonwebstudio.co.uk" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="text" name="business" placeholder="Business name" />
+            <input type="email" name="email" placeholder="Email address" required />
+            <textarea name="message" placeholder="Tell us a little about your business or what you need" required></textarea>
+            <button class="btn btn-primary" type="submit">Send Enquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>© <span id="year"></span> North London Web Studio. Helping local businesses grow online.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
