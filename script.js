@@ -117,12 +117,74 @@ const revealObserver = new IntersectionObserver(entries => {
 
 revealEls.forEach(el => revealObserver.observe(el));
 
-/* --- Contact Form --- */
+/* --- EmailJS Contact Form --- */
+/* ⬇️  Paste your three EmailJS values below */
+const EMAILJS_PUBLIC_KEY  = 'H1IlLlLDCiTU5KSh6';
+const EMAILJS_SERVICE_ID  = 'service_1bri0lz';
+const EMAILJS_TEMPLATE_ID = 'template_mrgt53c';
+
+/* Load EmailJS SDK */
+(function () {
+  const script  = document.createElement('script');
+  script.src    = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+  script.onload = () => emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  document.head.appendChild(script);
+})();
+
 function handleSend(btn) {
-  btn.textContent = 'Message Sent ✓';
-  btn.style.background = '#3a7a3a';
-  btn.style.color = '#fff';
-  btn.style.cursor = 'default';
+  /* Grab field values */
+  const fields   = btn.closest('.contact-form').querySelectorAll('input, textarea');
+  const name     = fields[0].value.trim();
+  const email    = fields[1].value.trim();
+  const business = fields[2].value.trim();
+  const message  = fields[3].value.trim();
+
+  /* Basic validation */
+  if (!name || !email || !message) {
+    btn.textContent = 'Please fill in all fields';
+    btn.style.background = '#8b1a1a';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2500);
+    return;
+  }
+
+  /* Loading state */
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+
+  /* Send via EmailJS */
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    from_name: name,
+    from_email: email,
+    business:  business || 'Not provided',
+    message:   message
+  })
+  .then(() => {
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#2a6a3a';
+    btn.style.color = '#fff';
+    btn.style.opacity = '1';
+    /* Clear fields */
+    fields.forEach(f => f.value = '');
+  })
+  .catch(err => {
+    console.error('EmailJS error:', err);
+    btn.textContent = 'Failed — please try again';
+    btn.style.background = '#8b1a1a';
+    btn.style.color = '#fff';
+    btn.style.opacity = '1';
+    btn.disabled = false;
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 3000);
+  });
 }
 
 /* --- Footer Year --- */
